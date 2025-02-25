@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    username: kin_admin
+    password: kin_pass
+    url: jdbc:postgresql://localhost:5476/kinolog
+    driver-class-name: org.postgresql.Driver
+
