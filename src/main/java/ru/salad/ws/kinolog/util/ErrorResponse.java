@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ContentErrorResponse {
+public class ErrorResponse {
     private String message;
     private Long timestamp;
 }

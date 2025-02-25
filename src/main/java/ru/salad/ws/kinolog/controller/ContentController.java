@@ -14,17 +14,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import ru.salad.ws.kinolog.entity.Content;
-import ru.salad.ws.kinolog.service.Service;
-import ru.salad.ws.kinolog.util.ContentErrorResponse;
-import ru.salad.ws.kinolog.util.ContentNotFoundException;
+import ru.salad.ws.kinolog.service.ContentService;
+import ru.salad.ws.kinolog.util.ErrorResponse;
+import ru.salad.ws.kinolog.util.NotFoundException;
 
 import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 
 @RestController
 @RequestMapping(value = "/content", consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
 @RequiredArgsConstructor
-public class Controller {
-    private final Service service;
+public class ContentController {
+    private final ContentService service;
 
     @GetMapping("/{id}")
     public ResponseEntity<Content> findById(@PathVariable Long id) {
@@ -44,8 +44,8 @@ public class Controller {
 
 
     @ExceptionHandler
-    private ResponseEntity<ContentErrorResponse> handleException(ContentNotFoundException exception) {
-        ContentErrorResponse response = new ContentErrorResponse(
+    private ResponseEntity<ErrorResponse> handleException(NotFoundException exception) {
+        ErrorResponse response = new ErrorResponse(
             "Контент с этим ID не найден",
             System.currentTimeMillis()
         );
