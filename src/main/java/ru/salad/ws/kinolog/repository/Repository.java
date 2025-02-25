@@ -5,4 +5,7 @@ import ru.salad.ws.kinolog.entity.Content;
 
 @org.springframework.stereotype.Repository
 public interface Repository extends JpaRepository<Content, Long> {
+    Content findByYear(Integer year);
+
+    Content findByName(String name);
 }

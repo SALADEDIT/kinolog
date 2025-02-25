@@ -15,5 +15,13 @@ public class Service {
             .orElseThrow(ContentNotFoundException::new);
     }
 
+    public Content findByYear(Integer year) {
+        return repository.findByYear(year);
+    }
+
+    public Content findByName(String name) {
+        return repository.findByName(name);
+    }
+
 
 }
