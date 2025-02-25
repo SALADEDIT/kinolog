@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.util.Date;
 
 @Entity
 @Data
@@ -39,5 +40,8 @@ public class Content {
     private String director;
 
     @Column(name = "world_premiere")
-    private String worldPremier;
+    private Date worldPremier;
+
+    @Column(name = "viewed")
+    private String viewed;
 }

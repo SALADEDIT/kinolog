@@ -1,6 +1,9 @@
 package ru.salad.ws.kinolog.service;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.transaction.annotation.Transactional;
 import ru.salad.ws.kinolog.entity.Content;
 import ru.salad.ws.kinolog.repository.Repository;
 import ru.salad.ws.kinolog.util.ContentNotFoundException;
@@ -15,13 +18,13 @@ public class Service {
             .orElseThrow(ContentNotFoundException::new);
     }
 
-    public Content findByYear(Integer year) {
-        return repository.findByYear(year);
+    public Page<Content> findAllByYear(Integer year, Pageable pageable) {
+        return repository.findAllByYear(year, pageable);
     }
 
-    public Content findByName(String name) {
-        return repository.findByName(name);
+    @Transactional
+    public Content create(Content content) {
+        return repository.save(content);
     }
-
 
 }
