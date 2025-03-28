@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.salad.ws.kinolog.entity.Actor;
@@ -25,6 +27,11 @@ public class ActorController {
     @GetMapping("/{id}")
     public ResponseEntity<Actor> findById(@PathVariable Long id) {
         return new ResponseEntity<>(service.findById(id), HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<Actor> create(@RequestBody Actor actor) {
+        return new ResponseEntity<>(service.create(actor), HttpStatus.CREATED);
     }
 
     @ExceptionHandler

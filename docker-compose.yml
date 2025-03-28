@@ -1,0 +1,30 @@
+name: kinolog-full
+version: '4.39.0'
+services:
+  db:
+    container_name: kinolog-db
+    image: postgres
+    environment:
+      POSTGRES_USER: kin_admin
+      POSTGRES_PASSWORD: kin_pass
+      POSTGRES_DB: kinolog
+    networks:
+      - kinolog_mynetwork
+    ports:
+      - "5476:5432"
+
+  app:
+    build: .
+    container_name: kinolog-t
+    environment:
+      DATABASE_URL: jdbc:postgresql://db:5432/kinolog
+    depends_on:
+      - db
+    networks:
+      - kinolog_mynetwork
+    ports:
+      - "8080:8080"
+
+networks:
+  kinolog_mynetwork:
+    driver: bridge
