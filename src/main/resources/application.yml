@@ -2,17 +2,16 @@ spring:
   datasource:
     username: kin_admin
     password: kin_pass
-#    url: jdbc:postgresql://localhost:5476/kinolog
-    url: jdbc:postgresql://db:5432/kinolog
+    url: jdbc:postgresql://localhost:5476/kinolog
+#    url: jdbc:postgresql://db:5432/kinolog-db
     driver-class-name: org.postgresql.Driver
   flyway:
     enabled: true
     baseline-on-migrate: true
-    schemas: kinolog.public
 
   docker:
     compose:
-      enabled: true
+      enabled: false
       profiles:
         active: dev
       lifecycle-management: START_AND_STOP

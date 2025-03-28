@@ -1,7 +1,5 @@
 package ru.salad.ws.kinolog.service;
 
-import jakarta.transaction.Transactional;
-
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.salad.ws.kinolog.entity.Actor;
@@ -9,6 +7,8 @@ import ru.salad.ws.kinolog.entity.Content;
 import ru.salad.ws.kinolog.repository.ActorRepository;
 import ru.salad.ws.kinolog.repository.ContentRepository;
 import ru.salad.ws.kinolog.util.NotFoundException;
+
+import jakarta.transaction.Transactional;
 
 @Service
 @RequiredArgsConstructor
